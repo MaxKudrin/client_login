@@ -8,3 +8,7 @@ export const AUTH_LOGIN_START = "AUTH_LOGIN_START";
 export const AUTH_LOGIN_SUCCESS = "AUTH_LOGIN_SUCCESS";
 export const AUTH_LOGIN_ERROR = "AUTH_LOGIN_ERROR";
 
+export const LOGOUT = "LOGOUT";
+
+export const GET_USERS = "GET_USERS";
+export const GET_USERS_ERROR = "GET_USERS_ERROR";

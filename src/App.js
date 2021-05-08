@@ -5,12 +5,15 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import Main from "./components/auth/Main/Main";
 import {connect} from "react-redux";
 import {autoLogin} from "./redux/Actions/authActions";
+import Logout from "./components/auth/Logout/Logout";
+import NavBar from "./components/auth/NavBar/NavBar";
 
 const App = (props) => {
   let route = (
     <Switch>
-      <Route path="/auth" component={Login} />
-      <Route path="/users" component={Users} />
+      <Route path="/login" component={Login} />
+      <Route path="/Register" component={Login} />
+      <Route path="/main" component={Main} />
       <Route path="/" exact component={Main} />
       <Redirect to="/" />
     </Switch>
@@ -18,17 +21,24 @@ const App = (props) => {
   if (props.authenticated) {
     route = (
       <Switch>
+        <Route path="/main" component={Main} />
         <Route path="/users" component={Users} />
-        <Redirect to="/users" />
+        <Route path="/logout" component={Logout} />
+        <Route path="/" component={Main} />
+        <Redirect to="/" />
       </Switch>
     );
   }
   useEffect(() => {
-    console.log("Hello from useEffect");
     props.autoLogin();
     // eslint-disable-next-line
   }, []);
-  return route;
+  return (
+    <>
+      <NavBar />
+      {route}
+    </>
+  );
 };
 
 function mapStateToProps(state) {

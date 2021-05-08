@@ -2,6 +2,7 @@ import {
   AUTH_CHANGE_HANDLER,
   AUTH_LOGIN_SUCCESS,
   AUTH_REGISTER_ERROR,
+  LOGOUT,
 } from "../Actions/actionTypes";
 
 const initialStore = {
@@ -38,6 +39,8 @@ export default function authReducer(store = initialStore, action) {
       return {...store, controls: action.payload};
     case AUTH_LOGIN_SUCCESS:
       return {...store, token: action.payload};
+    case LOGOUT:
+      return initialStore;
     default:
       return store;
   }

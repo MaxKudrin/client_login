@@ -6,6 +6,7 @@ import {
   AUTH_LOGIN_START,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGIN_ERROR,
+  LOGOUT,
 } from "./actionTypes";
 import {loginUrl, registerUrl} from "../../config";
 import axios from "axios";
@@ -96,6 +97,10 @@ export function autoLogin() {
       dispatch(authLoginError());
     }
   };
+}
+export function logout() {
+  localStorage.removeItem("token");
+  return {type: LOGOUT};
 }
 
 function controlValidate(validation, value) {
